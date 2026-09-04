@@ -1,6 +1,4 @@
-Yes. Below is a **complete, polished `README.md`** for your Voting App, tailored to the project structure you showed me. You can **replace your current `README.md` completely** with this.
 
-````markdown
 # 🗳️ Voting App
 
 A full-stack web-based voting application built using the **MERN stack**. The application provides user authentication, candidate management, voting functionality, and result tracking with persistent data stored in MongoDB.
@@ -415,36 +413,7 @@ JWT_SECRET=your_jwt_secret
 PORT=4000
 ```
 
-### ⚠️ Security
 
-**Never upload your actual `.env` file to GitHub.**
-
-Do not expose:
-
-```text
-MongoDB username
-MongoDB password
-MongoDB connection string
-JWT secret
-API keys
-Private credentials
-```
-
-Instead, the repository contains:
-
-```text
-.env.example
-```
-
-Example:
-
-```env
-MONGODB_URL=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-PORT=4000
-```
-
----
 
 # 🚀 Getting Started
 
