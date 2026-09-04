@@ -1,0 +1,463 @@
+/* =========================
+   GLOBAL STYLING
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #111827;
+  color: #f3f4f6;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  width: 100%;
+  min-height: 70px;
+  padding: 0 50px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: #1f2937;
+  border-bottom: 1px solid #374151;
+}
+
+.navbar-logo a {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar-logo a:hover {
+  color: #60a5fa;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.navbar-links a {
+  color: #d1d5db;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.navbar-links a:hover {
+  color: #60a5fa;
+}
+
+.navbar-links button {
+  padding: 8px 16px;
+
+  border: none;
+  border-radius: 6px;
+
+  background-color: #dc2626;
+  color: white;
+
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.navbar-links button:hover {
+  background-color: #b91c1c;
+}
+
+
+/* =========================
+   GENERAL PAGE CONTAINER
+========================= */
+
+.page-container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.page-container h1 {
+  font-size: 45px;
+  margin-bottom: 30px;
+  color: #f3f4f6;
+}
+
+
+/* =========================
+   HOME PAGE
+========================= */
+
+.home-container {
+  min-height: calc(100vh - 70px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  padding: 20px;
+}
+
+.home-container h1 {
+  font-size: 55px;
+  margin-bottom: 20px;
+}
+
+.home-container p {
+  font-size: 20px;
+  color: #9ca3af;
+  margin-bottom: 30px;
+}
+
+
+/* =========================
+   LOGIN AND SIGNUP
+========================= */
+
+.auth-container {
+  width: 100%;
+  min-height: calc(100vh - 70px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 30px 20px;
+  box-sizing: border-box;
+}
+
+
+/* Card */
+
+.auth-card {
+  width: 100%;
+  max-width: 450px;
+
+  padding: 35px;
+
+  background-color: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 12px;
+
+  box-sizing: border-box;
+}
+
+
+/* Heading */
+
+.auth-card h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 25px;
+
+  font-size: 32px;
+  color: white;
+}
+
+
+/* Form */
+
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+
+/* Input fields */
+
+.auth-card input,
+.auth-card select {
+  width: 100%;
+
+  padding: 12px 14px;
+
+  background-color: #111827;
+  color: white;
+
+  border: 1px solid #4b5563;
+  border-radius: 6px;
+
+  font-size: 16px;
+
+  box-sizing: border-box;
+}
+
+
+/* Placeholder */
+
+.auth-card input::placeholder {
+  color: #9ca3af;
+}
+
+
+/* Input focus */
+
+.auth-card input:focus,
+.auth-card select:focus {
+  outline: none;
+
+  border-color: #60a5fa;
+
+  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.15);
+}
+
+
+/* Button */
+
+.auth-card button {
+  width: 100%;
+
+  padding: 12px;
+
+  border: none;
+  border-radius: 6px;
+
+  background-color: #2563eb;
+  color: white;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+
+/* Button hover */
+
+.auth-card button:hover {
+  background-color: #1d4ed8;
+}
+
+
+/* Button click */
+
+.auth-card button:active {
+  transform: scale(0.98);
+}
+
+
+/* Responsive for mobile */
+
+@media (max-width: 500px) {
+
+  .auth-container {
+    padding: 20px 15px;
+  }
+
+  .auth-card {
+    padding: 25px 20px;
+  }
+
+  .auth-card h1 {
+    font-size: 28px;
+  }
+}
+
+/* =========================
+   CANDIDATES PAGE
+========================= */
+
+.candidates-container {
+  width: 90%;
+  max-width: 900px;
+
+  margin: 40px auto;
+  text-align: center;
+}
+
+.candidates-container h1 {
+  font-size: 48px;
+  margin-bottom: 30px;
+}
+
+.candidate-card {
+  padding: 25px;
+  margin-bottom: 20px;
+
+  background-color: #1f2937;
+
+  border: 1px solid #374151;
+  border-radius: 10px;
+
+  transition: 0.2s;
+}
+
+.candidate-card:hover {
+  transform: translateY(-3px);
+  border-color: #60a5fa;
+}
+
+.candidate-card h2 {
+  margin-bottom: 15px;
+  font-size: 28px;
+}
+
+.candidate-card p {
+  margin: 8px 0;
+  font-size: 18px;
+  color: #9ca3af;
+}
+
+
+/* =========================
+   VOTE PAGE
+========================= */
+
+.vote-container {
+  width: 90%;
+  max-width: 900px;
+
+  margin: 40px auto;
+  text-align: center;
+}
+
+.vote-container h1 {
+  font-size: 48px;
+  margin-bottom: 30px;
+}
+
+.vote-card {
+  padding: 25px;
+  margin-bottom: 20px;
+
+  background-color: #1f2937;
+
+  border: 1px solid #374151;
+  border-radius: 10px;
+}
+
+.vote-card h2 {
+  margin-bottom: 15px;
+  font-size: 28px;
+}
+
+.vote-card p {
+  margin: 8px 0;
+  font-size: 18px;
+  color: #9ca3af;
+}
+
+.vote-card button {
+  margin-top: 15px;
+  padding: 10px 25px;
+
+  border: none;
+  border-radius: 6px;
+
+  background-color: #16a34a;
+  color: white;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.vote-card button:hover {
+  background-color: #15803d;
+}
+
+
+/* =========================
+   RESULTS PAGE
+========================= */
+
+.results-container {
+  width: 90%;
+  max-width: 900px;
+
+  margin: 40px auto;
+  text-align: center;
+}
+
+.results-container h1 {
+  font-size: 48px;
+  margin-bottom: 30px;
+}
+
+.result-card {
+  padding: 25px;
+  margin-bottom: 20px;
+
+  background-color: #1f2937;
+
+  border: 1px solid #374151;
+  border-radius: 10px;
+}
+
+.result-card h2 {
+  margin-bottom: 15px;
+  font-size: 28px;
+}
+
+.result-card p {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #9ca3af;
+}
+
+.result-card .votes {
+  font-size: 22px;
+  font-weight: bold;
+  color: #60a5fa;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+  transition: 0.2s;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .navbar-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .home-container h1,
+  .candidates-container h1,
+  .vote-container h1,
+  .results-container h1 {
+    font-size: 36px;
+  }
+}
