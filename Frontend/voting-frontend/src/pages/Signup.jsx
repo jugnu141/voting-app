@@ -26,7 +26,7 @@ function Signup() {
 
     try {
       const response = await fetch(
-        "http://localhost:4000/api/v1/user/signup",
+        "https://voting-app-backend-l94a.onrender.com/api/v1/user/signup",
         {
           method: "POST",
           headers: {
