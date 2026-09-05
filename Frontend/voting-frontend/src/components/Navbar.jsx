@@ -9,9 +9,15 @@ function Navbar() {
     !!localStorage.getItem("token")
   );
 
-  // Check login status whenever route changes
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  // Check login and admin status whenever route changes
   useEffect(() => {
-    setIsLoggedIn(!!localStorage.getItem("token"));
+    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    setIsLoggedIn(!!token);
+    setIsAdmin(user?.role === "admin");
   }, [location]);
 
   const handleLogout = () => {
@@ -19,6 +25,7 @@ function Navbar() {
     localStorage.removeItem("user");
 
     setIsLoggedIn(false);
+    setIsAdmin(false);
 
     alert("Logged out successfully");
 
@@ -42,8 +49,17 @@ function Navbar() {
         ) : (
           <>
             <Link to="/candidates">Candidates</Link>
+
             <Link to="/vote">Vote</Link>
+
             <Link to="/results">Results</Link>
+
+            {/* Admin Dashboard - only visible to admins */}
+            {isAdmin && (
+              <Link to="/admin">
+                Admin Dashboard
+              </Link>
+            )}
 
             <button onClick={handleLogout}>
               Logout
