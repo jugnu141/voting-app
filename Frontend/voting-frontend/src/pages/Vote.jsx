@@ -9,7 +9,7 @@ function Vote() {
     const fetchCandidates = async () => {
       try {
         const response = await fetch(
-          "http://localhost:4000/api/v1/candidate/"
+          "https://voting-app-backend-l94a.onrender.com/api/v1/candidate/"
         );
 
         const data = await response.json();
