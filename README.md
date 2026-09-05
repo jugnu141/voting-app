@@ -1,6 +1,12 @@
 
 # 🗳️ Voting App
 
+**Built with React • Node.js • Express.js • MongoDB**
+
+🚀 **Live Demo:**
+
+[https://voting-app-frontend-d2xo.onrender.com](https://voting-app-frontend-d2xo.onrender.com)
+
 A full-stack **Online Voting System** built using the MERN stack — MongoDB, Express.js, React.js, and Node.js.
 
 The application allows users to register, securely log in, view candidates, cast votes, and view election results. It also includes a role-based **Admin Dashboard** for managing candidates and monitoring election results.
@@ -1074,12 +1080,10 @@ Feedback and suggestions are always welcome.
 
 ---
 
-# 🗳️ Voting App
 
-**Built with React • Node.js • Express.js • MongoDB**
 
-🚀 **Live Demo:**
 
-[https://voting-app-frontend-d2xo.onrender.com](https://voting-app-frontend-d2xo.onrender.com)
+
+
 
 
