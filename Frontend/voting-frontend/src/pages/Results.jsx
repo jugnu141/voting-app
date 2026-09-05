@@ -11,7 +11,7 @@ function Results() {
   const fetchResults = async () => {
     try {
       const response = await fetch(
-        "http://localhost:4000/api/v1/candidate/vote/voteCount"
+        "https://voting-app-backend-l94a.onrender.com/api/v1/candidate/vote/voteCount"
       );
 
       const data = await response.json();
