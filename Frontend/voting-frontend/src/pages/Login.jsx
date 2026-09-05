@@ -7,6 +7,7 @@ function Login() {
 
   const navigate = useNavigate();
 
+  // Normal user/admin login
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -17,7 +18,7 @@ function Login() {
 
     try {
       const response = await fetch(
-        "https://voting-app-backend-l94a.onrender.com/api/v1/user/login",
+        "http://localhost:4000/api/v1/user/login",
         {
           method: "POST",
           headers: {
@@ -35,19 +36,59 @@ function Login() {
       if (data.success) {
         alert("Login successful");
 
-        // Save token for protected routes later
+        // Save authentication data
         localStorage.setItem("token", data.token);
-
-        // Save logged-in user data
         localStorage.setItem("user", JSON.stringify(data.user));
 
-        navigate("/");
+        // Redirect based on role
+        if (data.user?.role === "admin") {
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
       } else {
-        alert(data.message);
+        alert(data.message || "Login failed");
       }
     } catch (error) {
       console.error("Login error:", error);
-      alert("Something went wrong");
+      alert("Unable to connect to server");
+    }
+  };
+
+  // Demo Admin Login
+  const handleDemoLogin = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:4000/api/v1/user/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            aadharCardNumber: "65656565",
+            password: "DemoAdmin@123",
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert("Demo Admin login successful!");
+
+        // Save authentication data
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+
+        // Go to Admin Dashboard
+        navigate("/admin");
+      } else {
+        alert(data.message || "Demo Admin login failed");
+      }
+    } catch (error) {
+      console.error("Demo login error:", error);
+      alert("Unable to connect to server");
     }
   };
 
@@ -63,7 +104,8 @@ function Login() {
           onChange={(e) => setAadharCardNumber(e.target.value)}
         />
 
-        <br /><br />
+        <br />
+        <br />
 
         <input
           type="password"
@@ -72,10 +114,19 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <br /><br />
+        <br />
+        <br />
 
-        <button type="submit">Login</button>
+        <button type="submit">
+          Login
+        </button>
       </form>
+
+      <br />
+
+      <button type="button" onClick={handleDemoLogin}>
+        🚀 Try Demo Admin
+      </button>
     </div>
   );
 }
