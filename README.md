@@ -1,8 +1,4 @@
-Absolutely. Below is a **complete updated README.md** based on your current project, including the new Admin Dashboard, Demo Admin flow, local setup, deployment architecture, security notes, API structure, project structure, and testing instructions.
 
-You can replace your entire current `README.md` with this:
-
-````md
 # 🗳️ Voting App
 
 A full-stack **Online Voting System** built using the MERN stack — MongoDB, Express.js, React.js, and Node.js.
@@ -1086,13 +1082,4 @@ Feedback and suggestions are always welcome.
 
 [https://voting-app-frontend-d2xo.onrender.com](https://voting-app-frontend-d2xo.onrender.com)
 
-```
 
-### One correction before you commit it
-
-Your old README's project structure didn't include `AdminDashboard.jsx`, and its deployment section still said the frontend could be on Vercel and that deployment was coming soon. The updated version above fixes those outdated parts. :contentReference[oaicite:0]{index=0}
-
-Also, I would **not put the Demo Admin Aadhar/password in the README**. Your website's **Try Demo Admin** button is much cleaner for a public portfolio.
-
-One other thing: the README currently describes authentication as cookie-based in several places, while your frontend is also storing the JWT in `localStorage`. Before publishing the README, we should make that wording match your actual implementation exactly rather than overstating the security model. :contentReference[oaicite:1]{index=1}
-```
