@@ -44,7 +44,7 @@ function Vote() {
 
       // Send vote request to backend
       const response = await fetch(
-        `http://localhost:4000/api/v1/candidate/vote/${candidateId}`,
+        `https://voting-app-backend-l94a.onrender.com/api/v1/candidate/vote/${candidateId}`,
         {
           method: "POST",
           headers: {
