@@ -4,7 +4,7 @@ function AdminDashboard() {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token");
 
-  const API_URL = "http://localhost:4000/api/v1/candidate";
+  const API_URL = "https://voting-app-backend-l94a.onrender.com/api/v1/candidate";
 
   const [candidates, setCandidates] = useState([]);
   const [results, setResults] = useState([]);
