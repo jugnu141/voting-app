@@ -1,27 +1,88 @@
+Absolutely. Below is a **complete updated README.md** based on your current project, including the new Admin Dashboard, Demo Admin flow, local setup, deployment architecture, security notes, API structure, project structure, and testing instructions.
 
+You can replace your entire current `README.md` with this:
+
+````md
 # 🗳️ Voting App
 
-A full-stack web-based voting application built using the **MERN stack**. The application provides user authentication, candidate management, voting functionality, and result tracking with persistent data stored in MongoDB.
+A full-stack **Online Voting System** built using the MERN stack — MongoDB, Express.js, React.js, and Node.js.
 
-The project is designed as a practical full-stack application demonstrating **React, Node.js, Express.js, MongoDB, JWT authentication, REST APIs, role-based authorization, and frontend-backend integration**.
+The application allows users to register, securely log in, view candidates, cast votes, and view election results. It also includes a role-based **Admin Dashboard** for managing candidates and monitoring election results.
+
+The project demonstrates practical implementation of:
+
+- React.js
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT Authentication
+- Role-Based Authorization
+- REST APIs
+- CRUD Operations
+- React Router
+- Frontend–Backend Integration
+- Git & GitHub
+- Cloud Deployment
 
 ---
 
 ## 🌐 Live Demo
 
-🚧 **Coming Soon**
+🚀 **Live Application:**
 
-The application is currently being prepared for production deployment.
+https://voting-app-frontend-d2xo.onrender.com
+
+The application is deployed using:
+
+- **Frontend:** Render Static Site
+- **Backend:** Render Web Service
+- **Database:** MongoDB Atlas
+
+### 🎯 Demo Admin
+
+The login page includes a:
+
+> 🚀 Try Demo Admin
+
+button that allows visitors to explore the administrative functionality without manually entering demo credentials.
+
+The Demo Admin account is intended only for demonstration purposes.
+
+> ⚠️ **Demo Environment:** Please do not enter real Aadhaar numbers, passwords, phone numbers, addresses, or other sensitive personal information.
 
 ---
 
-## 📌 About The Project
+# 📌 About The Project
 
-The **Voting App** is a full-stack online voting platform where users can create accounts, log in securely, view candidates, cast votes, and view election results.
+The Voting App is a web-based voting platform designed to demonstrate how a full-stack application can handle authentication, authorization, candidate management, voting, and result tracking.
 
-The backend provides RESTful APIs for authentication, candidate management, and voting-related operations, while the React frontend provides the user interface for interacting with the application.
+The application has two primary types of users:
 
-The application uses **MongoDB** for persistent data storage and **JWT-based authentication** for securing protected operations.
+### 👤 Voter
+
+A voter can:
+
+- Create an account
+- Log in
+- View candidates
+- Cast a vote
+- View election results
+- Log out
+
+### 👨‍💼 Administrator
+
+An administrator can:
+
+- Access the Admin Dashboard
+- View candidates
+- Add candidates
+- Edit candidate information
+- Delete candidates
+- View election results
+- Monitor vote counts
+
+Administrative operations are protected by role-based authorization.
 
 ---
 
@@ -32,42 +93,93 @@ The application uses **MongoDB** for persistent data storage and **JWT-based aut
 - User registration
 - User login
 - JWT-based authentication
-- Secure authentication using cookies
-- Protected routes
-- View available candidates
-- Cast votes
-- View voting results
-- User-specific authenticated operations
+- Protected API operations
+- Candidate listing
+- Voting functionality
+- Election result viewing
+- User logout
+- Role-based access
 
 ---
 
 ## 👨‍💼 Admin Features
 
-The application includes role-based functionality for administrative operations.
+The application includes a dedicated Admin Dashboard.
 
-Administrators can perform candidate-management operations such as:
+Administrators can:
 
-- Add candidates
-- View candidates
-- Update candidate information
-- Delete candidates
-- Manage voting-related resources
+- 📊 View dashboard statistics
+- 👥 View all candidates
+- ➕ Add candidates
+- ✏️ Edit candidates
+- 🗑️ Delete candidates
+- 📈 View election results
+- 🔄 Refresh vote results
+- 🚪 Logout securely
 
-Administrative APIs are protected using authorization middleware.
+The Admin Dashboard is accessible only to authenticated users with an administrative role.
 
 ---
 
-## 🗳️ Voting System
+# 🚀 Demo Flow
 
-The voting module allows authenticated users to interact with the available candidates and cast their vote.
+Visitors can explore the application using two different flows.
 
-The voting workflow is:
+## Voter Flow
+
+```text
+Open Website
+     ↓
+Signup
+     ↓
+Create Voter Account
+     ↓
+Login
+     ↓
+View Candidates
+     ↓
+Cast Vote
+     ↓
+View Results
+````
+
+---
+
+## Admin Flow
+
+```text
+Open Website
+     ↓
+Login
+     ↓
+🚀 Try Demo Admin
+     ↓
+Admin Dashboard
+     ↓
+Manage Candidates
+     ├── Add
+     ├── Edit
+     └── Delete
+     ↓
+View Election Results
+```
+
+---
+
+# 🗳️ Voting System
+
+The voting system allows authenticated voters to select a candidate and cast their vote.
+
+The general workflow is:
 
 ```text
 User
   │
   ▼
-Login / Authentication
+Login
+  │
+  ▼
+Authentication
   │
   ▼
 View Candidates
@@ -85,16 +197,161 @@ Backend Validation
 MongoDB
   │
   ▼
-Voting Results
-````
+Updated Vote Count
+  │
+  ▼
+Election Results
+```
+
+The backend performs authentication and authorization checks before protected operations are processed.
 
 ---
 
-## 📊 Results
+# 📊 Election Results
 
-The application provides a results section where voting information can be retrieved and displayed.
+The application provides an election results section that retrieves voting information from MongoDB.
 
-Results are generated from the data stored in MongoDB.
+The Admin Dashboard also provides a results view where administrators can monitor candidate vote counts.
+
+Example:
+
+```text
+Candidate             Party             Votes
+
+Candidate A           Party X             25
+Candidate B           Party Y             18
+Candidate C           Party Z             11
+```
+
+The results are generated from the stored application data.
+
+---
+
+# 🛡️ Authentication & Authorization
+
+The application separates **authentication** from **authorization**.
+
+## Authentication
+
+Authentication answers:
+
+> "Who is this user?"
+
+The application uses JWT-based authentication to identify authenticated users.
+
+General flow:
+
+```text
+Signup
+  ↓
+User Account
+  ↓
+Login
+  ↓
+Credentials Verified
+  ↓
+JWT Generated
+  ↓
+Token Stored
+  ↓
+Protected API Requests
+```
+
+---
+
+## Authorization
+
+Authorization answers:
+
+> "What is this user allowed to do?"
+
+The application uses user roles to restrict administrative operations.
+
+Example:
+
+```text
+User
+ │
+ ├── voter
+ │     └── Voting functionality
+ │
+ └── admin
+       └── Candidate Management
+       └── Election Results
+```
+
+Candidate management operations are protected on the backend using authorization checks.
+
+---
+
+# 🔐 Demo Admin
+
+The project includes a dedicated Demo Admin account for portfolio and demonstration purposes.
+
+The Demo Admin is stored in the database with:
+
+```text
+role: admin
+```
+
+The frontend provides a:
+
+```text
+🚀 Try Demo Admin
+```
+
+button on the Login page.
+
+This allows visitors to quickly explore the Admin Dashboard.
+
+### Important
+
+The Demo Admin account should contain only fake/demo information.
+
+Never use:
+
+* Real Aadhaar numbers
+* Real passwords
+* Personal phone numbers
+* Personal addresses
+* Sensitive user information
+
+---
+
+# 🧱 Application Architecture
+
+```text
+                         ┌───────────────────┐
+                         │       User        │
+                         └─────────┬─────────┘
+                                   │
+                                   ▼
+                         ┌───────────────────┐
+                         │  React Frontend   │
+                         │     + Vite        │
+                         └─────────┬─────────┘
+                                   │
+                              HTTP Requests
+                                   │
+                                   ▼
+                         ┌───────────────────┐
+                         │ Express Backend   │
+                         │     REST API      │
+                         └─────────┬─────────┘
+                                   │
+                   ┌───────────────┼───────────────┐
+                   │               │               │
+                   ▼               ▼               ▼
+             Authentication  Authorization   Voting Logic
+                   │               │               │
+                   └───────────────┼───────────────┘
+                                   │
+                                   ▼
+                         ┌───────────────────┐
+                         │     MongoDB       │
+                         │      Atlas        │
+                         └───────────────────┘
+```
 
 ---
 
@@ -102,14 +359,14 @@ Results are generated from the data stored in MongoDB.
 
 ## Frontend
 
-| Technology   | Purpose                    |
-| ------------ | -------------------------- |
-| React.js     | Frontend UI                |
-| Vite         | Development and build tool |
-| JavaScript   | Application logic          |
-| CSS          | Styling                    |
-| React Router | Client-side routing        |
-| Axios        | API communication          |
+| Technology    | Purpose                  |
+| ------------- | ------------------------ |
+| React.js      | Frontend UI              |
+| Vite          | Development & build tool |
+| JavaScript    | Application logic        |
+| CSS           | Styling                  |
+| React Router  | Client-side routing      |
+| Axios / Fetch | API communication        |
 
 ---
 
@@ -118,13 +375,14 @@ Results are generated from the data stored in MongoDB.
 | Technology    | Purpose               |
 | ------------- | --------------------- |
 | Node.js       | Backend runtime       |
-| Express.js    | Web framework         |
+| Express.js    | REST API framework    |
 | JavaScript    | Backend logic         |
 | Mongoose      | MongoDB interaction   |
 | JWT           | Authentication        |
 | Cookie Parser | Cookie handling       |
 | CORS          | Cross-origin requests |
 | dotenv        | Environment variables |
+| bcrypt        | Password hashing      |
 
 ---
 
@@ -136,17 +394,18 @@ Results are generated from the data stored in MongoDB.
 
 ---
 
-## Development & Testing
+## Development Tools
 
 * Visual Studio Code
 * Git
 * GitHub
 * Postman
 * npm
+* MongoDB Compass
 
 ---
 
-# 🏗️ Project Structure
+# 📁 Project Structure
 
 ```text
 voting-app/
@@ -169,8 +428,6 @@ voting-app/
 │   │   ├── candidate.js
 │   │   └── user.js
 │   │
-│   ├── postman/
-│   │
 │   ├── routes/
 │   │   ├── candidateRoutes.js
 │   │   └── userRoutes.js
@@ -187,20 +444,16 @@ voting-app/
 │   └── voting-frontend/
 │       │
 │       ├── public/
-│       │   ├── favicon.svg
-│       │   └── icons.svg
 │       │
 │       ├── src/
 │       │   │
 │       │   ├── assets/
-│       │   │   ├── hero.png
-│       │   │   ├── react.svg
-│       │   │   └── vite.svg
 │       │   │
 │       │   ├── components/
 │       │   │   └── Navbar.jsx
 │       │   │
 │       │   ├── pages/
+│       │   │   ├── AdminDashboard.jsx
 │       │   │   ├── Candidates.jsx
 │       │   │   ├── Home.jsx
 │       │   │   ├── Login.jsx
@@ -225,154 +478,74 @@ voting-app/
 └── README.md
 ```
 
-> `node_modules` and actual environment files are intentionally excluded from the repository.
-
----
-
-# 🔄 Application Architecture
-
-```text
-                         ┌─────────────────────┐
-                         │       User          │
-                         └──────────┬──────────┘
-                                    │
-                                    ▼
-                         ┌─────────────────────┐
-                         │   React Frontend    │
-                         │      + Vite         │
-                         └──────────┬──────────┘
-                                    │
-                              HTTP Requests
-                                    │
-                                    ▼
-                         ┌─────────────────────┐
-                         │   Express Backend   │
-                         │      REST API       │
-                         └──────────┬──────────┘
-                                    │
-                   ┌────────────────┼────────────────┐
-                   │                │                │
-                   ▼                ▼                ▼
-              Authentication   Authorization   Voting Logic
-                   │                │                │
-                   └────────────────┼────────────────┘
-                                    │
-                                    ▼
-                         ┌─────────────────────┐
-                         │      MongoDB        │
-                         │     Database        │
-                         └─────────────────────┘
-```
-
----
-
-# 🔐 Authentication
-
-The application uses **JWT (JSON Web Token)** based authentication.
-
-The general authentication flow is:
-
-```text
-Register
-   │
-   ▼
-User Account Created
-   │
-   ▼
-Login
-   │
-   ▼
-Credentials Verified
-   │
-   ▼
-JWT Generated
-   │
-   ▼
-Authentication Cookie
-   │
-   ▼
-Protected API Requests
-   │
-   ▼
-Authentication / Authorization
-```
-
-The backend uses `cookie-parser` to handle authentication cookies.
-
----
-
-# 🛡️ Authorization
-
-The application separates authentication from authorization.
-
-### Authentication
-
-Determines:
-
-> "Who is this user?"
-
-### Authorization
-
-Determines:
-
-> "What is this user allowed to do?"
-
-For example, candidate-management operations can be restricted to users with the appropriate administrative role.
-
 ---
 
 # 🔌 API Structure
 
-The backend exposes REST API routes under:
+The backend REST APIs are organized under:
 
 ```text
 /api/v1/
 ```
 
+---
+
 ## User Routes
+
+Base URL:
 
 ```text
 /api/v1/user
 ```
 
-Used for user-related functionality such as:
+Main functionality includes:
 
-* Registration
-* Login
-* User authentication
-* User-related operations
+```text
+POST /login
+POST /signup
+GET  /profile
+PUT  /profile/password
+```
+
+These routes handle user authentication and user-related operations.
 
 ---
 
 ## Candidate Routes
 
+Base URL:
+
 ```text
 /api/v1/candidate
 ```
 
-Used for candidate and voting-related functionality such as:
+Main functionality includes:
 
-* Candidate management
-* Candidate retrieval
-* Voting operations
-* Candidate-related requests
+```text
+GET    /
+POST   /addCandidate
+PUT    /:candidateID
+DELETE /:candidateID
+POST   /vote/:candidateID
+GET    /vote/voteCount
+```
+
+These endpoints handle candidate management, voting, and election results.
 
 ---
 
 # 🧪 API Testing With Postman
 
-The backend APIs can be tested using **Postman**.
+The backend APIs can also be tested independently using Postman.
 
-The project contains Postman-related resources for API testing.
-
-A typical testing flow is:
+Typical workflow:
 
 ```text
 1. Register User
        ↓
 2. Login
        ↓
-3. Authenticate User
+3. Receive Authentication Token
        ↓
 4. Fetch Candidates
        ↓
@@ -381,15 +554,17 @@ A typical testing flow is:
 6. Fetch Results
 ```
 
+The project contains Postman-related resources for API testing.
+
 ---
 
 # 🗄️ Database
 
-The application uses **MongoDB** for persistent data storage.
+The application uses MongoDB as its database.
 
-Mongoose is used to communicate with MongoDB from the Node.js backend.
+Mongoose is used by the Node.js backend to interact with MongoDB.
 
-The database contains application data related to:
+The application stores information related to:
 
 ```text
 Users
@@ -397,15 +572,15 @@ Candidates
 Votes
 ```
 
-For production deployment, **MongoDB Atlas** can be used as the cloud-hosted database.
+For cloud deployment, MongoDB Atlas is used as the database service.
 
 ---
 
 # ⚙️ Environment Variables
 
-Environment variables are used to keep sensitive configuration outside the source code.
+Sensitive configuration should be stored in environment variables.
 
-Create a `.env` file inside the `Backend` directory:
+Create a `.env` file inside the `Backend` directory.
 
 ```env
 MONGODB_URL=your_mongodb_connection_string
@@ -413,21 +588,30 @@ JWT_SECRET=your_jwt_secret
 PORT=4000
 ```
 
+### Important
 
+Never commit the actual `.env` file to GitHub.
+
+Use `.env.example` to document required environment variables.
+
+---
 
 # 🚀 Getting Started
 
-Follow the instructions below to run the project locally.
+Follow the instructions below to run the application locally.
+
+---
 
 ## Prerequisites
 
-Make sure you have installed:
+Install the following:
 
 * Node.js
 * npm
 * Git
-* MongoDB / MongoDB Atlas
-* Postman (optional, for API testing)
+* MongoDB or MongoDB Atlas
+* Postman (optional)
+* MongoDB Compass (optional)
 
 ---
 
@@ -449,7 +633,7 @@ cd voting-app
 
 # 🖥️ Backend Setup
 
-Navigate to the backend directory:
+Open a terminal and navigate to the backend:
 
 ```bash
 cd Backend
@@ -461,7 +645,13 @@ Install dependencies:
 npm install
 ```
 
-Create a `.env` file:
+Create:
+
+```text
+Backend/.env
+```
+
+Add:
 
 ```env
 MONGODB_URL=your_mongodb_connection_string
@@ -515,226 +705,67 @@ http://localhost:5173
 
 # 🔗 Frontend ↔ Backend Communication
 
-The frontend communicates with the backend through REST APIs.
+The frontend communicates with the Express backend using HTTP requests.
 
-The general flow is:
+General flow:
 
 ```text
-React
-  │
-  │ Axios / HTTP Request
-  ▼
-Express API
-  │
-  ▼
+React Frontend
+      │
+      │ HTTP Request
+      ▼
+Express REST API
+      │
+      ▼
 Controller
-  │
-  ▼
+      │
+      ▼
 Mongoose
-  │
-  ▼
+      │
+      ▼
 MongoDB
 ```
 
-API-related frontend logic is maintained in:
-
-```text
-Frontend/voting-frontend/src/services/api.js
-```
+API-related frontend functionality is organized within the frontend source code and services.
 
 ---
 
-# 📁 Backend Architecture
+# 🔐 Security Considerations
 
-The backend follows a modular structure.
+This project implements several basic security mechanisms:
 
-### `config/`
+* Password hashing using bcrypt
+* JWT-based authentication
+* Protected backend routes
+* Role-based authorization
+* Environment variables for secrets
+* CORS configuration
+* Backend authorization checks
 
-Contains configuration files such as the MongoDB database connection.
+### Demo Environment
 
-```text
-config/database.js
-```
+This application is intended for educational and portfolio demonstration purposes.
 
-### `controllers/`
-
-Contains application/business logic for users and candidates.
-
-```text
-controllers/
-├── candidate.js
-└── user.js
-```
-
-### `models/`
-
-Contains MongoDB/Mongoose data models.
-
-```text
-models/
-├── candidate.js
-└── user.js
-```
-
-### `routes/`
-
-Contains API route definitions.
-
-```text
-routes/
-├── candidateRoutes.js
-└── userRoutes.js
-```
-
-### `middlewares/`
-
-Contains middleware used for request processing and voting-related functionality.
-
----
-
-# 🎨 Frontend Architecture
-
-The frontend is built with React and Vite.
-
-The application is organized into:
-
-```text
-src/
-├── components/
-├── pages/
-├── services/
-├── assets/
-├── App.jsx
-└── main.jsx
-```
-
-### Pages
-
-The application contains pages for:
-
-* Home
-* Login
-* Signup
-* Candidates
-* Vote
-* Results
-
-### Components
-
-Reusable UI components are maintained inside:
-
-```text
-src/components/
-```
-
-### Services
-
-API communication is maintained inside:
-
-```text
-src/services/
-```
-
----
-
-# 📸 Screenshots
-
-## 🏠 Home Page
-
-> Screenshot coming soon.
-
----
-
-## 🔐 Login Page
-
-> Screenshot coming soon.
-
----
-
-## 📝 Signup Page
-
-> Screenshot coming soon.
-
----
-
-## 🗳️ Voting Page
-
-> Screenshot coming soon.
-
----
-
-## 📊 Results Page
-
-> Screenshot coming soon.
-
----
-
-# 🚀 Deployment
-
-The application can be deployed using separate services for the frontend, backend, and database.
-
-A possible production architecture is:
-
-```text
-                       GitHub
-                          │
-             ┌────────────┴────────────┐
-             │                         │
-             ▼                         ▼
-        Frontend                   Backend
-        Hosting                    Hosting
-             │                         │
-             │                         │
-             └───────────┬─────────────┘
-                         │
-                         ▼
-                   MongoDB Atlas
-```
-
-For example:
-
-```text
-Frontend → Vercel
-Backend  → Render
-Database → MongoDB Atlas
-```
-
-The actual deployment providers can be changed depending on hosting requirements.
-
----
-
-# 🔐 Production Environment Variables
-
-When deploying the backend, configure environment variables directly in the hosting provider's dashboard.
-
-For example:
-
-```text
-MONGODB_URL = your_production_mongodb_url
-JWT_SECRET  = your_production_jwt_secret
-PORT        = platform_provided_port
-```
-
-### Important
-
-Production secrets should **never** be committed to GitHub.
-
-The production server receives these values through its environment configuration.
+The Demo Admin account should never be used for sensitive or real-world data.
 
 ---
 
 # 🧑‍💻 Development Workflow
 
-A typical development workflow for this project is:
+A typical development workflow is:
 
 ```text
 Write Code
     ↓
-Run Frontend + Backend Locally
+Run Backend Locally
     ↓
-Test APIs Using Postman
+Run Frontend Locally
     ↓
 Test Application
+    ↓
+Test APIs with Postman
+    ↓
+Check Database
     ↓
 git add .
     ↓
@@ -742,41 +773,131 @@ git commit
     ↓
 git push
     ↓
-Deploy / Update Live Application
+Deploy
 ```
 
 ---
 
-# 📦 Important Git Files
+# 🚀 Deployment
 
-The repository includes a `.gitignore` file to prevent unnecessary and sensitive files from being uploaded.
+The application uses separate services for frontend, backend, and database.
 
-The following should not be committed:
+Current architecture:
+
+```text
+                         GitHub
+                            │
+               ┌────────────┴────────────┐
+               │                         │
+               ▼                         ▼
+        Render Frontend           Render Backend
+        Static Site               Web Service
+               │                         │
+               └────────────┬────────────┘
+                            │
+                            ▼
+                       MongoDB Atlas
+```
+
+### Current Deployment
+
+```text
+Frontend
+https://voting-app-frontend-d2xo.onrender.com
+
+Backend
+https://voting-app-backend-194a.onrender.com
+
+Database
+MongoDB Atlas
+```
+
+The frontend and backend are deployed separately and communicate through REST APIs.
+
+---
+
+# 🔐 Production Environment Variables
+
+Production environment variables should be configured through the hosting provider rather than committed to GitHub.
+
+Backend example:
+
+```text
+MONGODB_URL = your_production_mongodb_url
+JWT_SECRET  = your_production_jwt_secret
+PORT        = platform_provided_port
+```
+
+### Never commit:
 
 ```text
 .env
-node_modules/
-dist/
-build/
-logs/
-coverage/
-temporary files
 ```
 
-The following should normally remain in the repository:
+to the repository.
+
+---
+
+# 📸 Screenshots
+
+Screenshots can be added here to showcase the application's main interfaces.
+
+Recommended screenshots:
+
+## 🏠 Home Page
+
+Add a screenshot of the home page here.
+
+---
+
+## 🔐 Login Page
+
+Add a screenshot of the login page here.
+
+The Login page includes the:
 
 ```text
-package.json
-package-lock.json
-source code
-configuration code
-routes
-controllers
-models
-frontend source
-.env.example
-README.md
+🚀 Try Demo Admin
 ```
+
+option.
+
+---
+
+## 📝 Signup Page
+
+Add a screenshot of the signup page here.
+
+---
+
+## 👥 Candidate Page
+
+Add a screenshot showing available candidates.
+
+---
+
+## 🗳️ Voting Page
+
+Add a screenshot showing the voting interface.
+
+---
+
+## 📊 Results Page
+
+Add a screenshot showing election results.
+
+---
+
+## 👨‍💼 Admin Dashboard
+
+Add a screenshot showing:
+
+* Candidate management
+* Add Candidate
+* Edit Candidate
+* Delete Candidate
+* Election Results
+* Vote statistics
 
 ---
 
@@ -784,89 +905,103 @@ README.md
 
 This project demonstrates practical understanding of:
 
-* MERN stack development
-* React component architecture
-* React routing
-* REST API development
-* Express.js
+* MERN Stack
+* React.js
+* React Components
+* React Router
+* Vite
 * Node.js
+* Express.js
+* REST APIs
 * MongoDB
 * Mongoose
-* JWT authentication
-* Cookie-based authentication
-* Role-based authorization
+* JWT Authentication
+* Password Hashing
+* Protected Routes
+* Role-Based Authorization
 * Middleware
-* CRUD operations
-* Frontend-backend integration
-* Environment variables
+* CRUD Operations
+* Voting Logic
+* Frontend–Backend Integration
 * CORS
-* API testing with Postman
-* Git and GitHub
-* Production deployment concepts
+* Environment Variables
+* API Testing
+* Git
+* GitHub
+* Cloud Deployment
+* MongoDB Atlas
+* Render
 
 ---
 
 # 📚 What I Learned
 
-Through this project, I gained practical experience in building a complete full-stack application from frontend to backend and database.
+This project provided practical experience in building a complete full-stack application from the frontend to the backend and database.
 
-### Frontend
+## Frontend
 
 * Building React components
-* Managing multiple pages
-* Implementing client-side routing
+* Managing application pages
+* Client-side routing
 * Connecting React with REST APIs
-* Structuring frontend code
+* Managing authentication state
+* Creating an Admin Dashboard
+* Building CRUD interfaces
 
-### Backend
+## Backend
 
-* Creating Express.js APIs
+* Creating Express.js REST APIs
 * Organizing controllers and routes
 * Implementing middleware
-* Connecting applications to MongoDB
-* Implementing authentication and authorization
+* Connecting Node.js to MongoDB
+* Implementing authentication
+* Implementing authorization
+* Protecting administrative operations
 
-### Database
+## Database
 
 * Designing MongoDB models
 * Using Mongoose
-* Storing and retrieving application data
+* Storing application data
+* Retrieving candidate and voting information
 
-### Authentication
+## Authentication
 
 * JWT authentication
-* Cookies
-* Protected routes
+* Password hashing
+* Protected API requests
 * Role-based authorization
 
-### Development
+## Deployment
 
-* Git version control
-* GitHub repositories
-* Postman API testing
-* Environment variable management
-* Preparing an application for deployment
+* GitHub-based deployment
+* Render deployment
+* MongoDB Atlas
+* Production environment variables
+* Frontend/backend deployment architecture
 
 ---
 
 # 🔮 Future Improvements
 
-The project can be extended with additional features such as:
+Possible future improvements include:
 
-* [ ] Admin dashboard
+* [x] Admin Dashboard
+* [x] Candidate CRUD operations
+* [x] Election result management
+* [x] Demo Admin access
 * [ ] Multiple elections
 * [ ] Election start and end dates
 * [ ] Real-time voting statistics
 * [ ] Improved result visualization
+* [ ] Election management
 * [ ] Email verification
 * [ ] Password reset
 * [ ] Advanced input validation
 * [ ] Rate limiting
-* [ ] Enhanced security
 * [ ] Automated tests
-* [ ] Better error handling
-* [ ] Improved responsive design
-* [ ] Election management
+* [ ] Improved error handling
+* [ ] Enhanced responsive design
 * [ ] User profile management
 * [ ] Production monitoring
 
@@ -874,9 +1009,9 @@ The project can be extended with additional features such as:
 
 # 🤝 Contributing
 
-Contributions and suggestions are welcome.
+Contributions, suggestions, and improvements are welcome.
 
-## Fork the repository
+## Fork the Repository
 
 ```bash
 git clone https://github.com/jugnu141/voting-app.git
@@ -888,7 +1023,7 @@ Create a new branch:
 git checkout -b feature/your-feature
 ```
 
-Make your changes and commit:
+Make your changes:
 
 ```bash
 git add .
@@ -907,15 +1042,17 @@ Then create a Pull Request.
 
 # ⚠️ Disclaimer
 
-This project is developed for **educational, demonstration, and portfolio purposes**.
+This project is developed for:
 
-For use in a real-world election system, additional security measures, auditing, privacy controls, identity verification, infrastructure security, and extensive testing would be required.
+* Educational purposes
+* Demonstration purposes
+* Portfolio purposes
 
----
+It is **not intended to be used as a real-world election system**.
 
-# 📄 License
+A production election system would require significantly stronger security, identity verification, auditing, privacy controls, infrastructure security, monitoring, testing, legal compliance, and independent security review.
 
-This project is currently intended for educational and portfolio purposes.
+Please do not enter real personal or sensitive information into the demo application.
 
 ---
 
@@ -933,16 +1070,29 @@ Project Repository:
 
 ---
 
-## ⭐ Support
+# ⭐ Support
 
 If you find this project useful or interesting, consider giving the repository a ⭐ on GitHub.
+
+Feedback and suggestions are always welcome.
 
 ---
 
 # 🗳️ Voting App
 
-**Built with React • Node.js • Express • MongoDB**
+**Built with React • Node.js • Express.js • MongoDB**
 
-🚧 **Live deployment coming soon.**
+🚀 **Live Demo:**
 
-`
+[https://voting-app-frontend-d2xo.onrender.com](https://voting-app-frontend-d2xo.onrender.com)
+
+```
+
+### One correction before you commit it
+
+Your old README's project structure didn't include `AdminDashboard.jsx`, and its deployment section still said the frontend could be on Vercel and that deployment was coming soon. The updated version above fixes those outdated parts. :contentReference[oaicite:0]{index=0}
+
+Also, I would **not put the Demo Admin Aadhar/password in the README**. Your website's **Try Demo Admin** button is much cleaner for a public portfolio.
+
+One other thing: the README currently describes authentication as cookie-based in several places, while your frontend is also storing the JWT in `localStorage`. Before publishing the README, we should make that wording match your actual implementation exactly rather than overstating the security model. :contentReference[oaicite:1]{index=1}
+```
