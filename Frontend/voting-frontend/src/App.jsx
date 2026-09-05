@@ -10,6 +10,8 @@ import Login from "./pages/Login";
 import Candidates from "./pages/Candidates";
 import Vote from "./pages/Vote";
 import Results from "./pages/Results";
+import AdminDashboard from "./pages/AdminDashboard";
+
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
         <Route path="/candidates" element={<Candidates />} />
         <Route path="/vote" element={<Vote />} />
         <Route path="/results" element={<Results />} />
+         <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
     </>
   );
